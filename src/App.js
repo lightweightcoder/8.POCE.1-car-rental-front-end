@@ -8,6 +8,7 @@ import {
 
 // import the components
 import Cars from "./components/Cars";
+import Modal from "./components/Modal";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Cars />
           </div>
         </div>
+        <Modal />
       </div>
     </CarRentalProvider>
   );

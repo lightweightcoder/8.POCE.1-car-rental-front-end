@@ -3,7 +3,8 @@ import React, { useState, useContext } from "react";
 // import all the appropriate car rental functions
 import {
   carRentalContext,
-  loadCars
+  loadCars,
+  selectCarAction
 } from "../car-rental";
 
 export default function Cars() {
@@ -21,7 +22,7 @@ export default function Cars() {
   // data. this will trigger a rerender b/c the data is in Context
   const setCarSelected = (item, index) => {
     // update the global state in car-rental.js
-    dispatch(setSelectedCarIndex(index));
+    dispatch(selectCarAction(index));
     // update the local state
     setSelectedCarIndex(index);
   };
