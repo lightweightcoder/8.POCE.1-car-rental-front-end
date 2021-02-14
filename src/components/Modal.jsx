@@ -6,6 +6,9 @@ import {
   removeCarAction
 } from "../car-rental";
 
+// import the child components for the modal
+import CreateBooking from "./CreateBooking";
+
 export default function Modal(ChildComponent) {
   // initialize the car rental from the context provider to obtain the 
   // car rental state and dispatch function from the value attribute of the provider Higher Order Component in car-rental.js
@@ -31,9 +34,7 @@ export default function Modal(ChildComponent) {
         <button className="modal-close" onClick={ handleRemoveCar }>
           x
         </button>
-        <div>
-          i meant to do that now i shall wash myself intently. Your pillow is now my pet bed. Kitty poochy catching very fast laser pointer the dog smells bad but damn that dog lick the other cats, yet cats are a queer kind of folk yet lick the plastic bag. Nyan fluffness ahh cucumber! spill litter box.
-        </div>
+        {carRental.view === 'CREATE' ? <CreateBooking /> : ''}
       </div>
     </div>
   );
