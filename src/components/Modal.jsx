@@ -27,7 +27,7 @@ export default function Modal(ChildComponent) {
 
   return (
     <div className="modal-container">
-      <div className="modal">
+      <div className="modal-content">
         <button className="modal-close" onClick={ handleRemoveCar }>
           x
         </button>
