@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 // import all the appropriate car rental functions
 import {
   carRentalContext,
+  createBooking,
 } from "../car-rental";
 
 export default function CreateBooking() {
@@ -18,8 +19,21 @@ export default function CreateBooking() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
+  // hendle when create booking button is clicked
+  const handleCreateBookingClick = () => {
+    const booking = { startDate, endDate, id: currentCar.id };
+
+    createBooking(dispatch, booking);
+  }
+
   return (
     <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <h4>Create Booking</h4>
+          <p>Car: {`${currentCar.manufacturer} ${currentCar.model}`}</p>
+        </div>
+      </div>
       <div className="row">
         <div className="col-6">
           <p>Start date</p>
@@ -34,6 +48,10 @@ export default function CreateBooking() {
         </div>
         <div className="col-6">
           <input type="date" id="end-date" name="end-date" value={endDate} min="2021-01-01" max="2021-12-31" onChange={(e) => setEndDate(e.target.value)} />
+        </div>
+        <div className="col-12">
+          <br></br>
+          <button type="button" onClick={handleCreateBookingClick}>create booking</button>
         </div>
       </div>
     </div>

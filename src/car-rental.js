@@ -4,7 +4,6 @@ import axios from 'axios';
 // variables that represent which view (page) to load
 const HOME = 'HOME';
 const CREATE = 'CREATE';
-const REMOVE_CAR = 'REMOVE_CAR';
 
 // create an object that represents all the data contained in app.js
 export const initialState = {
@@ -27,6 +26,7 @@ export const initialState = {
 // define the action types of the reducer function
 const LOAD_CARS = "LOAD_CARS";
 const SELECT_CAR = 'SELECT_CAR';
+const REMOVE_CAR = 'REMOVE_CAR';
 
 // define the action creators for the reducer function
 export function loadCarsAction(cars) {
@@ -108,5 +108,11 @@ const BACKEND_URL = 'http://localhost:3004';
 export function loadCars(dispatch){
   axios.get(BACKEND_URL+'/cars').then((result) => {
     dispatch(loadCarsAction(result.data.cars));
+  });
+}
+
+export function createBooking(dispatch, booking){
+  return axios.post(BACKEND_URL+'/bookings', booking).then((result) => {
+    return result.data.order.id;
   });
 }
