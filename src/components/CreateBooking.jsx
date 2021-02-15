@@ -14,8 +14,9 @@ export default function CreateBooking() {
   const {carRental, dispatch} = useContext(carRentalContext);
 
   // get the selected car from the car rental context state data
-  const {currentCarIndex, cars} = carRental;
-  const currentCar = cars[currentCarIndex];
+  const {currentCarId, cars} = carRental;
+  // const currentCar = cars[currentCarId];
+  const currentCar = cars.filter(car => car.id === currentCarId)[0];
 
   // initialise local states
   const [booking, setBooking] = useState({

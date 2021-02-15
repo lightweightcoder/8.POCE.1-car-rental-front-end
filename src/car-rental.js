@@ -8,7 +8,7 @@ const CREATE = 'CREATE';
 // create an object that represents all the data contained in app.js
 export const initialState = {
   cars: [],
-  currentCarIndex: null,
+  currentCarId: null,
   view: HOME
 }
 
@@ -38,11 +38,11 @@ export function loadCarsAction(cars) {
   };
 }
 
-export function selectCarAction(carIndex) {
+export function selectCarAction(carId) {
   return {
     type: SELECT_CAR,
     payload: {
-      carIndex
+      carId
     }
   };
 }
@@ -59,10 +59,10 @@ export function carRentalReducer(state, action) {
     case LOAD_CARS:
       return {...state, cars: action.payload.cars}
     case SELECT_CAR:
-      const currentCarIndex = action.payload.carIndex;
-      return {...state, currentCarIndex, view: CREATE }
+      const currentCarId = action.payload.carId;
+      return {...state, currentCarId, view: CREATE }
     case REMOVE_CAR:
-      return {...state, currentCarIndex: null, view: HOME }
+      return {...state, currentCarId: null, view: HOME }
     default:
       return state;
   }
@@ -106,8 +106,11 @@ export function CarRentalProvider({children}) {
 const BACKEND_URL = 'http://localhost:3004';
 
 export function loadCars(dispatch){
-  axios.get(BACKEND_URL+'/cars').then((result) => {
+  return axios.get(BACKEND_URL+'/cars').then((result) => {
+    console.log('going to do dispatch');
     dispatch(loadCarsAction(result.data.cars));
+    console.log('after calling dispatch in loadCars');
+    return result.data.cars;
   });
 }
 
