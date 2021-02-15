@@ -6,7 +6,7 @@ import {
   removeCarAction
 } from "../car-rental";
 
-export default function Modal(ChildComponent) {
+export default function Modal({children}) {
   // initialize the car rental from the context provider to obtain the 
   // car rental state and dispatch function from the value attribute of the provider Higher Order Component in car-rental.js
   const {dispatch} = useContext(carRentalContext);
@@ -27,7 +27,8 @@ export default function Modal(ChildComponent) {
           <button className="modal-close" onClick={ handleCloseModal }>
             x
           </button>
-          <ChildComponent />
+          {/* <ChildComponent /> */}
+          {children}
         </div>
       </div>
     );

@@ -26,7 +26,9 @@ export default function CurrentView() {
       )
     case 'CREATE':
       return (
-        <div>{Modal(CreateBooking)}</div>
+        <Modal>
+          <CreateBooking />
+        </Modal>
       )
     default:
       return <div></div>;
