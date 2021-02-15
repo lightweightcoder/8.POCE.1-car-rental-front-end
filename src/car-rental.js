@@ -113,6 +113,7 @@ export function loadCars(dispatch){
 
 export function createBooking(dispatch, booking){
   return axios.post(BACKEND_URL+'/bookings', booking).then((result) => {
-    return result.data.order.id;
+    // return the new booking object
+    return result.data.booking.id;
   });
 }
