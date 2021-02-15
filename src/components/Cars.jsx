@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 
 // import all the appropriate car rental functions
 import {
@@ -12,19 +12,14 @@ export default function Cars() {
   // car rental state and dispatch function from the value attribute of the provider Higher Order Component in car-rental.js
   const {carRental, dispatch} = useContext(carRentalContext);
 
-  // get the cars from the car rental context state data
-  const {cars} = carRental;
-
-  // initialise the local states
-  const [selectedCarIndex, setSelectedCarIndex] = useState();
+  // get the cars and currentCarIndex from the car rental context state data
+  const {cars, currentCarIndex} = carRental;
 
   // when the user selects a car, dispatch the event and set the
   // data. this will trigger a rerender b/c the data is in Context
   const setCarSelected = (item, index) => {
     // update the global state in car-rental.js
     dispatch(selectCarAction(index));
-    // update the local state
-    setSelectedCarIndex(index);
   };
 
   return (
@@ -39,7 +34,7 @@ export default function Cars() {
           <button
             key={car.id}
             type="button"
-            className={index === selectedCarIndex ? "car selected" : "car"}
+            className={index === currentCarIndex ? "car selected" : "car"}
             onClick={() => setCarSelected(car, index)}
           >
             {`${car.manufacturer} ${car.model}`}

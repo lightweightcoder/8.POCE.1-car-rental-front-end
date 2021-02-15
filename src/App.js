@@ -8,7 +8,7 @@ import {
 
 // import the components
 import Cars from "./components/Cars";
-import Modal from "./components/Modal";
+import CurrentView from "./components/CurrentView";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
             <Cars />
           </div>
         </div>
-        <Modal />
+        <CurrentView />
       </div>
     </CarRentalProvider>
   );

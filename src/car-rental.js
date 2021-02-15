@@ -7,8 +7,8 @@ const CREATE = 'CREATE';
 
 // create an object that represents all the data contained in app.js
 export const initialState = {
-  cars : [],
-  currentCarIndex : null,
+  cars: [],
+  currentCarIndex: null,
   view: HOME
 }
 
