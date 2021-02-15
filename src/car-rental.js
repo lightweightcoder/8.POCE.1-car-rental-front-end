@@ -120,3 +120,9 @@ export function createBooking(dispatch, booking){
     return result.data.booking.id;
   });
 }
+
+export function loadBookings(){
+  return axios.get(BACKEND_URL+'/bookings').then((result) => {
+    return result.data.bookings;
+  });
+}
